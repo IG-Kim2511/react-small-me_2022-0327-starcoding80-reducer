@@ -1,4 +1,6 @@
 import React, { useReducer, useState } from "react";
+import Attendance from "./Attendance";
+
 
 // {/*  */}
 
@@ -26,49 +28,70 @@ import React, { useReducer, useState } from "react";
 
   🍉40
   dispatch = useState의 set~~ 과 같은방식임 - state를 바꿔주는 함수 
+
+  🍉50
+  dispatch()실행하면, reducer실행이 됨
+
+  현재 state : 초기값 0
+
+  action : dispatch();의 파라미터. - 현재 파라미터 없어서 undefined 뜸
+
+  🍉60
+  dispatch()의 파라미터 :  object형식으로 만듬
+
+  input에 입력한 값 - useReducer 에 dispatch해서, 
+
+  useReducer의 state값 바꾸기
 */
 
-  // js0409-20.
-const reducer = (state, action)=>{
-  console.log('execute reducer',state, action)
+// js0409-20.
+const reducer = (state, action) => {
+  console.log(state)
+  console.log("execute reducer", state, action);
+
+  console.log(action.payload);
+  // return state + action.payload;
 };
 
-
-function App() {  
+function App() {
   // 🍀 js0404. input value
-  const [number, setNumber] = useState(0);
+  const [inputNumber, setInputNumber] = useState(0);
 
-
-  // js0409-10
+  // js0409-10, js0409-50
   const [stateMoney, dispatch] = useReducer(reducer, 0);
 
   return (
     <div>
       <h2>useReducer Bank</h2>
 
-
+      
       {/* js0409-30.*/}
       <p>account : {stateMoney} $</p>
-
+      
       {/* js0404.*/}
       <input
-        type="number"
-        value={number}
-        onChange={(e) => {
-          setNumber(parseInt(e.target.value));
-        }}
+      type="number"
+      value={inputNumber}
+      onChange={(e) => {
+        setInputNumber(parseInt(e.target.value));
+      }}
       />
 
-      {/* js0409-40.*/}
-      <button onClick={()=>{
-        dispatch({type: 'deposit'});
-      }}>Deposit</button>
+      <p>input number : {inputNumber}</p>
 
+      {/* js0409-40. -60*/}
+      <button
+        onClick={() => {
+          dispatch({ type: "deposit", payload: inputNumber });
+        }}
+      >
+        Deposit
+      </button>
 
-
-      
       <button>withdraw</button>
 
+
+      <Attendance/>
     </div>
   );
 }
