@@ -62,11 +62,11 @@ function App() {
 
   return (
     <div>
-      <h2>useReducer Bank</h2>
+      <h1>useReducer Bank</h1>
 
       
       {/* js0409-30.*/}
-      <p>account : {stateMoney} $</p>
+      <h3>account : {stateMoney} $</h3>
       
       {/* js0404.*/}
       <input
