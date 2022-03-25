@@ -1,7 +1,6 @@
 import React, { useReducer, useState } from "react";
 import Attendance from "./Attendance";
 
-
 // {/*  */}
 
 /* 🍀 js0409. use reducer
@@ -44,16 +43,58 @@ import Attendance from "./Attendance";
   useReducer의 state값 바꾸기
 */
 
-// js0409-20.
-const reducer = (state, action) => {
-  console.log(state)
-  console.log("execute reducer", state, action);
+// 🍀 js0612. use reducer , switch
+/* 
+  dispatch... type:"~~"  뜻 : 
 
-  console.log(action.payload);
-  return state + action.payload;
+  reducer에 들어오는 수많은 dispatch()들 중 적용할 함수 지정할때 사용됨
+
+  보통 switch , if esle 사용
+
+  action.type이 'deposit'일때 
+
+  지정되지않은 action.type이 온때 : default값으로 기존 state return
+
+
+  🍉-20. withdraw 기능
+
+  🍉-30. default
+    action.type이 지정되지 않은게 오면, 기존state값 0 ..return함
+
+
+*/
+
+// 🍀 js0620. dispatch의 type을 variable로 빼서 사용하기
+const ACTION_TYPES ={
+  deposit : "deposit",
+  withdraw :"withdraw",
 };
 
 
+
+// js0409-20.
+const reducer = (state, action) => {
+  console.log("execute reducer", state, action);
+  console.log(action.payload);
+
+  //🍉 switch 안쓰고 그냥 간단하게 return할때
+  // return state + action.payload;
+
+  // js0612
+  switch (action.type) {
+    case "deposit":
+      return state + action.payload;
+
+  // js0612-20 , js0620
+    // case "withdraw":
+    case ACTION_TYPES.withdraw:
+      return state - action.payload;
+
+  // js0612-30
+    default:
+      return state;
+  }
+};
 
 function App() {
   // 🍀 js0404. input value
@@ -64,19 +105,20 @@ function App() {
 
   return (
     <div>
-      <h1>useReducer Bank</h1>
+      <h1>useReducer practice</h1>
 
-      
+      <h1> Bank</h1>
+
       {/* js0409-30.*/}
       <h3>account : {stateMoney} $</h3>
-      
+
       {/* js0404.*/}
       <input
-      type="number"
-      value={inputNumber}
-      onChange={(e) => {
-        setInputNumber(parseInt(e.target.value));
-      }}
+        type="number"
+        value={inputNumber}
+        onChange={(e) => {
+          setInputNumber(parseInt(e.target.value));
+        }}
       />
 
       <p>input number : {inputNumber}</p>
@@ -90,10 +132,16 @@ function App() {
         Deposit
       </button>
 
-      <button>withdraw</button>
+      {/* js0612-20, -30, js0620*/}
+      <button
+        onClick={() => {
+          dispatch({ type: ACTION_TYPES.withdraw, payload: inputNumber });
+        }}
+      >
+        withdraw
+      </button>
 
-
-      <Attendance/>
+      <Attendance />
     </div>
   );
 }
