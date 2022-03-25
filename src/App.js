@@ -50,8 +50,10 @@ const reducer = (state, action) => {
   console.log("execute reducer", state, action);
 
   console.log(action.payload);
-  // return state + action.payload;
+  return state + action.payload;
 };
+
+
 
 function App() {
   // 🍀 js0404. input value
