@@ -36,8 +36,8 @@ const reducer = (state, action) => {
       return {
         const: state.count,
         students: state.students.map((p_student)=>{
-            if (p_student.id === action.payload.id) {
-                return  {...p_student, isHere: !p_student.isHere};
+            if (p_student.id === action.payload.id) {   
+                return  {...p_student, isHere: !p_student.isHere}; 
                 
             }
 
