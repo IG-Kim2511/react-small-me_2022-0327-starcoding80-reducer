@@ -1,27 +1,24 @@
 import React, { useReducer, useState } from "react";
 
 const reducer = (state, action) => {
-    switch (action.type) {
-        case "add-student":
+  switch (action.type) {
+    case "add-student":
+      const name = action.payload.name;
 
-        const name = action.payload.name;
+      const newStudent = {
+        id: Date.now(),
+        name: name,
+        isHere: false,
+      };
 
-        const newStudent = {
-            id: Date.now(),
-            name: name,
-            isHere: false,
-        }
-        
-        return{
-            const: state.count +1, 
-            students: [ ...state.students, newStudent ],
-        }
+      return {
+        const: state.count + 1,
+        students: [...state.students, newStudent],
+      };
 
-        default:
-            return state;
-        
-    }
-
+    default:
+      return state;
+  }
 };
 
 // 🍀 js0548. state초기값...밖에 정의하기
@@ -45,7 +42,9 @@ const Attendance = () => {
 
   return (
     <div>
-      <h1>Attendance List</h1>
+      <h1>Attendance List (reducer upgrade)</h1>
+
+      
 
       {/* js0548 */}
       <h3>people count : {stateStudentsInfo.count}</h3>
@@ -59,9 +58,13 @@ const Attendance = () => {
         }}
       />
 
-      <button onClick={()=>{
-          dispatch({type:"add-student", payload : {name}})
-      }}>add</button>
+      <button
+        onClick={() => {
+          dispatch({ type: "add-student", payload: { name } });
+        }}
+      >
+        add
+      </button>
 
       {/* 🍀js0600 . studentsInfo state의 students부분을 map loop하고, 
         students.name을 props로 넘김*/}

@@ -107,7 +107,7 @@ function App() {
     <div>
       <h1>useReducer practice</h1>
 
-      <h1> Bank</h1>
+      <h1> Bank (reducer basic)</h1>
 
       {/* js0409-30.*/}
       <h3>account : {stateMoney} $</h3>
@@ -121,7 +121,7 @@ function App() {
         }}
       />
 
-      <p>input number : {inputNumber}</p>
+      <h3>input number : {inputNumber}</h3>
 
       {/* js0409-40. -60*/}
       <button
