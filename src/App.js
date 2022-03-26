@@ -65,6 +65,11 @@ import Attendance from "./Attendance";
 */
 
 // 🍀 js0620. dispatch의 type을 variable로 빼서 사용하기
+/* 
+string바꿔도 정상 작동함
+
+여기 variable에서만 string을 바꾸면 나머지도 다 알아서 바뀌므로, 수정이 편해짐
+*/
 const ACTION_TYPES ={
   deposit : "deposit",
   withdraw :"withdraw",
@@ -72,7 +77,7 @@ const ACTION_TYPES ={
 
 
 
-// js0409-20.
+// js0409-20.  reducer 함수
 const reducer = (state, action) => {
   console.log("execute reducer", state, action);
   console.log(action.payload);
