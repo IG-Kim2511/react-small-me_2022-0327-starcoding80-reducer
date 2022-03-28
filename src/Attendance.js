@@ -2,6 +2,8 @@ import React, { useReducer, useState } from "react";
 
 //🍀 js0903. reducer 함수
 const reducer = (state, action) => {
+  
+  console.log(state)
   switch (action.type) {
     case "add-student":
       const name = action.payload.name;
@@ -56,15 +58,16 @@ const reducer = (state, action) => {
 const initialState = {
   count: 0,
 
-  //  reducer 변수에  다 정리되어 있으므로, 빈칸으로 초기값 넣음
+  // students: [
+  //   {
+  //     id: Date.now(),
+  //     name: "James",
+  //     isHere: false,
+  //   },
+  // ],
+
+  //  reducer 변수에  다 정리되어 있으므로, 빈칸으로 초기값 넣고 마무리
   students: [],
-  //   students: [
-  //     {
-  //       id: Date.now(),
-  //       name: "James",
-  //       isHere: false,
-  //     },
-  //   ],
 };
 
 const Attendance = () => {
