@@ -27,18 +27,18 @@ const reducer = (state, action) => {
     */
     case "delete-student":
       return {
-        const: state.count - 1,
+        count: state.count - 1,
         students: state.students.filter(
-          (p_student) => p_student.id !== action.payload.id
+          (p_student) => p_student.id !== action.payload.p_id
         ),
       };
     //   js0931
     /* map loop에서 같은 id 찾으면, 그아이템에 isHere이 true면 false로, false면 true로 바꿔줌 */
     case "mark-student":
       return {
-        const: state.count,
+        count: state.count,
         students: state.students.map((p_student)=>{
-            if (p_student.id === action.payload.id) {   
+            if (p_student.id === action.payload.p_id) {   
                 return  {...p_student, isHere: !p_student.isHere}; 
                 
             }
@@ -138,7 +138,7 @@ const Student = ({ p_name, p_dispatch, p_id, p_isHere }) => {
     */}
       <span
         style={{
-          textdecoration: p_isHere ? "line-through" : "none",
+          textDecoration: p_isHere ? "line-through" : "none",
           color: p_isHere ? "gray" : "black",
         }}
 
