@@ -138,7 +138,7 @@ const Student = ({ p_name, p_dispatch, p_id, p_isHere }) => {
     */}
       <span
         style={{
-          textDecoration: p_isHere ? "line-through" : "none",
+          textDecorationy: p_isHere ? "line-through" : "none",
           color: p_isHere ? "gray" : "black",
         }}
 
