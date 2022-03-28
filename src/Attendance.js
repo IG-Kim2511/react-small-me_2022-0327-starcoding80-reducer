@@ -16,7 +16,7 @@ const reducer = (state, action) => {
 
       // 🦄 return {~ } : 새로운 state값을 return하고 마무리
       return {
-        const: state.count + 1,
+        count: state.count + 1,
         students: [...state.students, newStudent],
       };
 
@@ -63,7 +63,7 @@ const initialState = {
   //     id: Date.now(),
   //     name: "James",
   //     isHere: false,
-  //   },
+  //   },     
   // ],
 
   //  reducer 변수에  다 정리되어 있으므로, 빈칸으로 초기값 넣고 마무리
@@ -128,7 +128,7 @@ const Student = ({ p_name, p_dispatch, p_id, p_isHere }) => {
     <div>
       {/* 🍀 js0931. mark기능 만들기 
 
-        🍉10. style 안에서 ? : 문법사용하기
+        🍉10. style 안에서 ternary operator ? : 문법사용하기
 
         isHere이 true이면 line-through
         isHere이 false이면 none
