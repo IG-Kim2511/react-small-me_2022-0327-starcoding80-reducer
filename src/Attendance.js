@@ -25,6 +25,11 @@ const reducer = (state, action) => {
         state.students.id 리스트 !== payload.id
         전체 리스트에서, payload로 넘어온 것만 빼고 return함
     */
+
+    /* 🦄 props에는 p_ 붙이는거 하지말자. 코딩이 되게 복잡해짐 (함수안의 파라미터에서는 ㅇㅋ) 
+    
+      그냥action.payload.id 하면 편한데 일일히 p_id 넣는것 너무 복잡해짐 */    
+
     case "delete-student":
       return {
         count: state.count - 1,
